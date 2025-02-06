@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NasaService } from '../nasa.service';
+import { RandomService } from '../random.service';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -10,16 +11,23 @@ import { FormControl } from '@angular/forms';
 })
 export class HomePage {
 
-imageData: any;
-fecha = new FormControl(new Date());
+categories: any;
+random: any;
 
-  constructor(private nasaService: NasaService) {}
+  constructor(private nasaService: NasaService, private randomService: RandomService) {}
 
   ngOnInit(){
-    this.nasaService.getImageOfTheDay().subscribe((data) => {
-      this.imageData = data;
+    this.nasaService.getcategories().subscribe((data) => {
+      this.categories = data;
       console.log(data);
+        
     })
+
+    
+    this.randomService.getrandom().subscribe((data) => {
+      this.random = data;
+      console.log(data);
+      })
   }
 
   

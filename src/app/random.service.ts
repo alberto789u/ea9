@@ -4,14 +4,14 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class NasaService {
-  private apiUrl = 'https://api.chucknorris.io/jokes/categories';
+export class RandomService {
+  private apiUrl = 'https://api.chucknorris.io/jokes/random';
   //private apiKey = '9YgkUeMw5gUfjVxv7yCxQCGTPOE1Rwk1dWqm1kWh'; // Reemplaza con tu API Key
 
 
   constructor(private http: HttpClient) { }
 
-  getcategories(): Observable<any> {
+  getrandom(): Observable<any> {
     return this.http.get(`${this.apiUrl}`);
   }
 

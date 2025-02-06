@@ -1,19 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Nasa image Alberto
+      <h1>Chuck Norris jokes</h1>
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
+<br>
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Nasa </ion-title>
-    </ion-toolbar>
-  </ion-header>
+  
 
-  <ion-content class="ion-padding">
+ <!---- <ion-content class="ion-padding">
     <ng-container *ngIf ="imageData; else loading">
       <img [src]="imageData.url" alt="NASA image of the Day">
       <ion-card-header>
@@ -25,8 +21,29 @@
   <ion-card-content>
     <p>{{ imageData.explanation }}</p>
     <p>Date:<strong>{{ imageData.date }}</strong></p>
-  </ion-card-content>
-  
+  </ion-card-content>--->
+  <ng-container *ngIf="random; else loading">
+    
+      <ion-label>
+        <h3>{{random.value}}</h3><br>
+        
+      </ion-label>
+    
+    </ng-container>
+    <button  id='lol'(click)="ngOnInit()"><h3>new joke</h3></button>
+  <ng-container *ngIf="categories.length; else loading">
+    <br>
+    <ion-label>
+      <h4>Categories:</h4><br>
+      
+    </ion-label>
+    <ion-item *ngFor="let p of categories" >
+      <ion-label>
+        <h2>{{p}}</h2>
+        
+      </ion-label>
+    </ion-item>
+    </ng-container>
   <ng-template #loading>
     <ion-spinner name="crescent"></ion-spinner>
   </ng-template>
